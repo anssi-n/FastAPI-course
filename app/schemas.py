@@ -58,8 +58,8 @@ class ItemResponse(BaseModel):
     item_huuto_text: Optional[constr(max_length=1024)]
     item_huuto_endtime: Optional[NaiveDatetime]
     item_modified: int
-    owner_id: Optional[int]
-    owner: UserResponse
+    #owner_id: Optional[int]
+    #owner: UserResponse
 
 class ItemCount(BaseModel):
     item_count: int 

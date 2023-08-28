@@ -107,7 +107,7 @@ class Item(Base):
     item_huuto_text = Column(mysql.VARCHAR(length=1024), nullable=True)
     item_huuto_endtime = Column(mysql.DATETIME(), nullable=True)
     item_modified = Column(mysql.TINYINT(), nullable=True, default=0)
-    owner_id = Column(mysql.INTEGER(), ForeignKey(
-        "users.id", ondelete="SET NULL"), nullable=True)
+    #owner_id = Column(mysql.INTEGER(), ForeignKey(
+    #    "users.id", ondelete="SET NULL"), nullable=True)
 
-    owner = relationship("ItemDatabaseUser")
+    #owner = relationship("ItemDatabaseUser")
