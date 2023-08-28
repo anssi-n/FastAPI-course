@@ -61,16 +61,13 @@ def get_item(id: int, db: Session = Depends(get_db)):
     #                         detail=f"Item with id {id} does not exist.")
     
     #select item.*, count(votes.item_id) as likes from item left join votes on item.item_id = votes.item_id group by item.item_id;
-    #item = db.query(models.Item, functions.count(models.Vote.item_id).label("likes")).join(models.Vote, disouter=True).filter(models.Item.item_id == id).first()
-    item = db.query(models.Item, models.MediaFormat).join(models.MediaFormat, isouter=True).filter(models.Item.item_id == id).first()
+    item = db.query(models.Item).filter(models.Item.item_id == id).first()
+    #item = db.query(models.Item, functions.count(models.Vote.item_id).label("likes")).join(models.Vote, isouter=True).filter(models.Item.item_id == id).first()
+    #item = db.query(models.Item, models.MediaFormat).join(models.MediaFormat, isouter=True).filter(models.Item.item_id == id).first()
     #item = db.query(models.Item.item_description, models.MediaFormat.format_name.label("item_item_formaatti")).apply_labels().join(models.MediaFormat, isouter=True).filter(models.Item.item_id == id).first()
 
-    print(item._asdict)
-    print(type(item))
-    print(type(item[0]))
-    print(type(item[1]))
     if item is not None:
-        return { item[0], item[1] }
+        return item
     else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"Item with id {id} does not exist.")

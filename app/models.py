@@ -109,6 +109,5 @@ class Item(Base):
     item_modified = Column(mysql.TINYINT(), nullable=True, default=0)
     owner_id = Column(mysql.INTEGER(), ForeignKey(
         "users.id", ondelete="SET NULL"), nullable=True)
-    item_views = Column(mysql.INTEGER(), nullable=True, default=0)
 
     owner = relationship("ItemDatabaseUser")
